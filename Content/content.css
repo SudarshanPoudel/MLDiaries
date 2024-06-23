@@ -21,7 +21,7 @@
     transition: 0.2s ease;
     box-sizing: border-box;
     scroll-behavior: smooth;
-    font-size: 1.1rem;
+    font-size: 1rem;
 
 }
 
@@ -112,6 +112,7 @@ body{
 .chapters h3{
     font-weight: 600;
     margin-bottom: 10px;
+    font-size: 1.5rem;
 }
 
 .chapters ul{
@@ -170,12 +171,12 @@ a.disabled {
     opacity: 0.6;
 }
 
-.content #aboutthismodule{
-    margin-top: -10px;
+.content > h1 ~ h1{
+    margin-top: 60px;
 }
 
 .content h1{
-    margin: 40px 0 20px 0;
+    margin-bottom: 20px;
     padding-left: 10px;
     border-left: 4px solid var(--main-color-1);
     font-size: 1.8rem;
@@ -192,8 +193,8 @@ a.disabled {
 
 .content p{
     text-align: justify;
-    font-size: 1.2rem;
-    line-height: 2rem;
+    font-size: 1.1rem;
+    line-height: 1.7rem;
 }
 strong{
     font-weight: 800;
@@ -201,6 +202,7 @@ strong{
 
 em{
     font-style: italic;
+    font-size: 1.2rem;
 }
 
 .content ol, .content ul{
@@ -273,6 +275,18 @@ td, th{
     padding: 1px 15px;
     border: 1px solid var(--text-color-1);
 }
+.katex *{
+    font-size: 1.2rem;
+}
+.mord{
+    transform: translate(0px,0.2rem);
+}
+
+
+.mtight{
+    font-size: 0.9rem;
+}
+
 
 @media only screen and (max-width: 720px) {
     body{

@@ -23,7 +23,6 @@ code.hljs, code.hljs  *{
 .hljs-quote {
     color: #18b213;
     font-style: italic;
-    text-transform: capitalize;
     font-size: 1rem;
 }
 .hljs-doctag,
@@ -80,4 +79,11 @@ code.hljs, code.hljs  *{
 }
 .hljs-link {
     text-decoration: underline;
+}
+
+
+pre:has(code.language-output){
+    background-color: #222426;
+    padding: 3px 15px;
+    margin-top: -10px;
 }

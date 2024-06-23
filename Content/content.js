@@ -66,11 +66,10 @@ papers = [
     },
 ];
 
-// Display chapters
 // Get the URL search parameters
 const searchParams = new URLSearchParams(window.location.search);
 
-// Get the id parameter value
+// Get the id parameter value and select array, folder and  module accordingly.
 let type = searchParams.get("type");
 
 if (type == "project") {
@@ -93,7 +92,10 @@ if (!(id > 1 && id <= arr.length)) {
 
 const module = arr[parseInt(id) - 1];
 
+
+// Function that takes HTML of pre block and returns it with copy code button
 function addCopyButtonToPre(preInnerHTML) {
+
     // Create heading div
     btn = `<button class = 'copy-btn'><i class="fa-regular fa-copy"></i>  Copy Code</button>`;
 
@@ -129,6 +131,7 @@ async function displayReadme() {
     }
 }
 
+// Function that generates next and prev page button according to id
 function generatePrevNextBtns() {
     const nextId = id + 1;
     const prevId = id - 1;
@@ -149,16 +152,18 @@ function generatePrevNextBtns() {
     return btns.innerHTML;
 }
 
-// Perform other JS code after readme file is loaded
 
+// Perform other JS code after readme file is loaded
 async function main() {
     await displayReadme();
 
+    // Display Module name
     document.querySelector(
         ".title"
     ).innerHTML = `Module ${id}: ${module.name} `;
     allChapters = [];
 
+    // Display all chapters
     chapterList = document.querySelector(".chapter-list");
     chapterList.innerHTML = "";
 
@@ -168,31 +173,50 @@ async function main() {
 
     preBlocks = document.querySelectorAll("pre");
     preBlocks.forEach((pre) => {
-        pre.innerHTML = addCopyButtonToPre(pre.innerHTML);
-        pre.querySelector(".copy-btn").onclick = function () {
-            // Select the code inside the code block
-            const range = document.createRange();
-            range.selectNode(pre.querySelector("code"));
-            window.getSelection().removeAllRanges();
-            window.getSelection().addRange(range);
-            document.execCommand("copy");
-            window.getSelection().removeAllRanges();
-            pre.querySelector(".copy-btn").innerHTML =
-                '<i class="fa-regular fa-copy"></i> Code Copied!';
-            setTimeout(() => {
+        if(!pre.querySelector('code').classList.contains('language-output')){
+            
+            pre.innerHTML = addCopyButtonToPre(pre.innerHTML);
+            pre.querySelector(".copy-btn").onclick = function () {
+                // Select the code inside the code block
+                const range = document.createRange();
+                range.selectNode(pre.querySelector("code"));
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+                document.execCommand("copy");
+                window.getSelection().removeAllRanges();
                 pre.querySelector(".copy-btn").innerHTML =
-                    '<i class="fa-regular fa-copy"></i> Copy Code';
-            }, 2000);
-        };
-
-        dataFrames = document.querySelectorAll(".dataframe")
-
-        dataFrames.forEach(df =>{
-            df.parentElement.classList = 'df';
-        })
-
-        hljs.highlightAll();
+                    '<i class="fa-regular fa-copy"></i> Code Copied!';
+                setTimeout(() => {
+                    pre.querySelector(".copy-btn").innerHTML =
+                        '<i class="fa-regular fa-copy"></i> Copy Code';
+                }, 2000);
+            };
+        }
     });
+
+    // Render dataFrame
+    dataFrames = document.querySelectorAll(".dataframe")
+
+    dataFrames.forEach(df =>{
+        df.parentElement.classList = 'df';
+    })
+
+    // Render math formulas
+    renderMathInElement(document.body, {
+        delimiters: [
+            {left: "\\[", right: "\\]", display: true},
+            {left: "$$", right: "$$", display: true},
+            {left: "\\(", right: "\\)", display: false},
+            {left: "$", right: "$", display: false}
+        ]
+    });
+
+    // Add blank target in anchor rag
+    document.querySelectorAll('a').forEach(a =>{
+        a.setAttribute('target', 'blank')
+    })    
+    // Highlight code
+    hljs.highlightAll();
 }
 
 main();
