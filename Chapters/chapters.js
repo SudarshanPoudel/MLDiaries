@@ -8,12 +8,12 @@ modules = [
         "filename": "02_Popular_ML_Models.md"
     },
     {
-        "name": "Clustering",
-        "filename": "03_Clustering.md"
+        "name": "Ensemble Methods",
+        "filename": "03_Ensemble_Methods.md",
     },
     {
-        "name": "Ensemble Methods",
-        "filename": "04_Ensemble_Methods.md"
+        "name": "Clustering",
+        "filename": "04_Clustering.md",
     },
     {
         "name": "Neural Networks",

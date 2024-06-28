@@ -86,4 +86,5 @@ pre:has(code.language-output){
     background-color: #222426;
     padding: 3px 15px;
     margin-top: -10px;
+    line-height: 1.7rem;
 }

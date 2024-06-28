@@ -184,11 +184,18 @@ a.disabled {
     font-weight: 700;
 }
 
+.content h2{
+    margin: 30px 0 10px 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
 
 
 .content h3{
     margin: 20px 0 10px 0;
     font-weight: 600;
+    font-size: 1.5rem;
 }
 
 .content p{
@@ -206,12 +213,10 @@ em{
 }
 
 .content ol, .content ul{
-    margin: 20px;
+    margin: 10px;
 }
 
-.content ol li, .content ul li{
-    margin-bottom: 1rem;
-}
+
 .content img{
     margin: 20px 0;
     max-width: 100%;
@@ -247,7 +252,7 @@ pre {
 }
 
 .content .df{
-    width: 90vw;
+    width: 100%;
     overflow-x: scroll;
     margin-bottom: 50px;
     padding-bottom: 0;
@@ -282,6 +287,9 @@ td, th{
     transform: translate(0px,0.2rem);
 }
 
+.mord.text *{
+    font-style: italic;
+}
 
 .mtight{
     font-size: 0.9rem;
