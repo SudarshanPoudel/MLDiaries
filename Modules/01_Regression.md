@@ -14,7 +14,7 @@ As we can see in the figure, we're given lots of known data, Now main goal of si
 So for a simple linear regression we basically want to get a function as 
 $$f(X) = \hat{Y} = \beta_0 + \beta_1 . X $$
 
-Here, \( \hat{Y} \) represents the predicted cost, \( \beta_0 \) is the intercept (where the line hits the Y-axis), \( \beta_1 \) is the slope of the line, and \( X \) is independent variable. And goal of the linear regression is to find values of  \( \beta_0 \) and \( \beta_1 \).
+Here, $ \hat{Y} $ represents the predicted cost, $ \beta_0 $ is the intercept (where the line hits the Y-axis), $ \beta_1 $ is the slope of the line, and $ X $ is independent variable. And goal of the linear regression is to find values of  $ \beta_0 $ and $ \beta_1 $.
 </p> 
 
 
@@ -27,14 +27,15 @@ $$
 \hat{Y} = \beta_0 + \beta_1 \cdot X_1 + \beta_2 \cdot X_2 + \ldots + \beta_n \cdot X_n
 $$
 
-Here, \( \hat{Y} \) is the predicted cost, \( \beta_0 \) is the intercept (the value of \( \hat{Y} \) when all independent variables are zero), \( \beta_1, \beta_2, \ldots, \beta_n \) are the coefficients that represent the effect of each independent variable \( X_1, X_2, \ldots, X_n \) on the predicted cost, respectively.
+Here, $ \hat{Y} $ is the predicted cost, $ \beta_0 $ is the intercept (the value of $ \hat{Y} $ when all independent variables are zero), $ \beta_1, \beta_2, \ldots, \beta_n $ are the coefficients that represent the effect of each independent variable $ X_1, X_2, \ldots, X_n $ on the predicted cost, respectively.
 </p>
 
 # Residuals, SSE and MSE
-As we saw in the image above, line doesn't actually fit all data points and perfectly fitting all data points isn't also possible. So when we make predictions, there will be differences between the observed values (actual data points) and the predicted values (predicted by the model) and that is what we call Residuals.
-Mathematically, the residual for an observation \( i \) is calculated as \( e_i = y_i - \hat{y}_i \), where \( y_i \) is the actual value and \( \hat{y}_i \) is the predicted value.
-<br>
 <p>
+As we saw in the image above, line doesn't actually fit all data points and perfectly fitting all data points isn't also possible. So when we make predictions, there will be differences between the observed values (actual data points) and the predicted values (predicted by the model) and that is what we call Residuals.
+Mathematically, the residual for an observation $ i $ is calculated as $ e_i = y_i - \hat{y}_i $, where $ y_i $ is the actual value and $ \hat{y}_i $ is the predicted value.
+<br>
+
 SSE stands for Sum of Squared Error, which is basically sum of square of all Residues.
 $$ \text{SSE} = \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 $$
 
@@ -50,14 +51,14 @@ And our main aim is to find a equation to the line with smallest SSE. We'll stud
 
 # Ordinary Least Square
 <p>
-Say we've multiple linear regression model \( \hat{Y} = \beta_0 + \beta_1 \cdot X_1 + \beta_2 \cdot X_2 + \ldots + \beta_n \cdot X_n \), we can represent this as \( \hat{Y} = X \cdot \hat{\beta} \) where \(X\) and \(\hat{\beta}\) are now matrices as
+Say we've multiple linear regression model $ \hat{Y} = \beta_0 + \beta_1 \cdot X_1 + \beta_2 \cdot X_2 + \ldots + \beta_n \cdot X_n $, we can represent this as $ \hat{Y} = X \cdot \hat{\beta} $ where $X$ and $\hat{\beta}$ are now matrices as
 $$
 X =  \begin{bmatrix} x_0 & x_1 &  x_2 & \ldots & x_n \end{bmatrix} 
 $$
 $$
 \hat{\beta} =  \begin{bmatrix} \beta_0 \\ \beta_1 \\  \beta_2 \\ \vdots \\ \beta_n \end{bmatrix} 
 $$
-Then according to OLS, we can calculate value of \(\hat{\beta}\) such that SSE is minimum as
+Then according to OLS, we can calculate value of $\hat{\beta}$ such that SSE is minimum as
 $$
  \hat{\beta} = (X^T X)^{-1} X^T y 
 $$
@@ -538,7 +539,7 @@ But there is a precision-recall tradeoff due to inverse relationship between the
 F1 score is the harmonic mean of precision and recall, providing a balance between the two. It's preferable to use F1 score when we want overall better model rather then going towards high precision or high recall. 
 $$ \text{F1 Score} = 2 \times \frac{Precision \times Recall}{Precision + Recall} $$
 </p>
-Inside (Sklearn.Metrics)[https://scikit-learn.org/stable/modules/model_evaluation.html#classification-metrics] We can get all the required functions to calculate accuracy, confusion matrix, precision, recall and f1 score.
+Inside [Sklearn.Metrics](https://scikit-learn.org/stable/modules/model_evaluation.html#classification-metrics)  We can get all the required functions to calculate accuracy, confusion matrix, precision, recall and f1 score.
 
 ```python
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix

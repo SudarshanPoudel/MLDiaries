@@ -126,8 +126,7 @@ async function displayReadme() {
     if (markdownText) {
         const converter = new showdown.Converter();
         const htmlContent = converter.makeHtml(markdownText);
-        document.querySelector(".content").innerHTML =
-            htmlContent + generatePrevNextBtns();
+        document.querySelector(".content").innerHTML = htmlContent
     }
 }
 
@@ -217,6 +216,9 @@ async function main() {
     })    
     // Highlight code
     hljs.highlightAll();
+
+    // Add prev and next btns
+    document.querySelector(".content").innerHTML += generatePrevNextBtns()
 }
 
 main();
