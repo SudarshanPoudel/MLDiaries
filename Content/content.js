@@ -4,8 +4,8 @@ modules = [
         filename: "01_Regression.md",
     },
     {
-        name: "Popular ML Models",
-        filename: "02_Popular_ML_Models.md",
+        name: "Popular ML Algorithms",
+        filename: "02_Popular_ML_Algorithms.md",
     },
     {
         name: "Ensemble Methods",
@@ -97,7 +97,7 @@ const module = arr[parseInt(id) - 1];
 function addCopyButtonToPre(preInnerHTML) {
 
     // Create heading div
-    btn = `<button class = 'copy-btn'><i class="fa-regular fa-copy"></i>  Copy Code</button>`;
+    btn = `<button class = "copy-btn"><i class="fa-regular fa-copy"></i>  Copy Code</button>`;
 
     // Append the Copy button to the code block
     preInnerHTML += btn;
@@ -170,29 +170,6 @@ async function main() {
         chapterList.innerHTML += `<li><a href="#${header.id}">${header.innerHTML}</a></li>`;
     });
 
-    preBlocks = document.querySelectorAll("pre");
-    preBlocks.forEach((pre) => {
-        if(!pre.querySelector('code').classList.contains('language-output')){
-            
-            pre.innerHTML = addCopyButtonToPre(pre.innerHTML);
-            pre.querySelector(".copy-btn").onclick = function () {
-                // Select the code inside the code block
-                const range = document.createRange();
-                range.selectNode(pre.querySelector("code"));
-                window.getSelection().removeAllRanges();
-                window.getSelection().addRange(range);
-                document.execCommand("copy");
-                window.getSelection().removeAllRanges();
-                pre.querySelector(".copy-btn").innerHTML =
-                    '<i class="fa-regular fa-copy"></i> Code Copied!';
-                setTimeout(() => {
-                    pre.querySelector(".copy-btn").innerHTML =
-                        '<i class="fa-regular fa-copy"></i> Copy Code';
-                }, 2000);
-            };
-        }
-    });
-
     // Render dataFrame
     dataFrames = document.querySelectorAll(".dataframe")
 
@@ -219,6 +196,29 @@ async function main() {
 
     // Add prev and next btns
     document.querySelector(".content").innerHTML += generatePrevNextBtns()
+
+    preBlocks = document.querySelectorAll("pre");
+    preBlocks.forEach((pre) => {
+        if(!pre.querySelector('code').classList.contains('language-output')){
+            
+            pre.innerHTML = addCopyButtonToPre(pre.innerHTML);
+            pre.querySelector(".copy-btn").onclick = function () {
+                // Select the code inside the code block
+                const range = document.createRange();
+                range.selectNode(pre.querySelector("code"));
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+                document.execCommand("copy");
+                window.getSelection().removeAllRanges();
+                pre.querySelector(".copy-btn").innerHTML =
+                    '<i class="fa-regular fa-copy"></i> Code Copied!';
+                setTimeout(() => {
+                    pre.querySelector(".copy-btn").innerHTML =
+                        '<i class="fa-regular fa-copy"></i> Copy Code';
+                }, 2000);
+            };
+        }
+    });
 }
 
 main();

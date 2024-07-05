@@ -293,6 +293,8 @@ td, th{
 
 .katex-display{
     max-width: 100%;
+    height: fit-content;
+    padding: 10px;
     overflow: scroll;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  
