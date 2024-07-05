@@ -4,8 +4,8 @@ modules = [
         "filename": "01_Regression.md"
     },
     {
-        "name": "Popular ML Models",
-        "filename": "02_Popular_ML_Models.md"
+        "name": "Popular ML Algorithms",
+        "filename": "02_Popular_ML_Algorithms.md"
     },
     {
         "name": "Ensemble Methods",
